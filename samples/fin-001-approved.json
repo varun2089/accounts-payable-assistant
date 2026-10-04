@@ -1,0 +1,111 @@
+{
+  "runId": "9f3684fc-543a-4785-9851-370d8ab85db4",
+  "caseId": "FIN-001",
+  "request": {
+    "caseId": "FIN-001",
+    "invoiceRef": "HOS-118877",
+    "vendorId": "VEND-1001",
+    "poNumber": "PO-5001",
+    "amount": 12500,
+    "currency": "AUD",
+    "notes": "Invoice HOS-118877 dated 2026-09-26 bills purchase order PO-5001, line 1: 40 ergonomic task chairs, line total AUD 12,500.00."
+  },
+  "status": "NEEDS_APPROVAL",
+  "outcome": {
+    "kind": "NEEDS_APPROVAL",
+    "output": {
+      "recommendation": "Approve HOS-118877 for posting. The three-way match returned MATCH, the duplicate check returned NONE, and the vendor is active with no risk flags. A Department Director must approve the AUD 12,500.00 amount.",
+      "proposedAction": "APPROVE_FOR_POSTING",
+      "confidence": "HIGH",
+      "citedEvidence": [
+        {
+          "documentId": "FIN-POL-002",
+          "heading": "1. Matching basis"
+        },
+        {
+          "documentId": "FIN-POL-002",
+          "heading": "2. Tolerances"
+        },
+        {
+          "documentId": "FIN-POL-002",
+          "heading": "3. Outcomes"
+        },
+        {
+          "documentId": "FIN-POL-003",
+          "heading": "2. Standard operating expenditure"
+        },
+        {
+          "documentId": "FIN-POL-003",
+          "heading": "5. Approval evidence"
+        }
+      ],
+      "calculations": {
+        "calculate_three_way_match": {
+          "outcome": "MATCH",
+          "poNumber": "PO-5001",
+          "invoiceTotal": 12500,
+          "poTotal": 12500,
+          "line1": {
+            "poQuantity": 40,
+            "poUnitPrice": 312.5,
+            "poLineTotal": 12500,
+            "invoiceLineTotal": 12500,
+            "receivedQuantity": 40,
+            "difference": 0,
+            "toleranceAllowed": 50,
+            "withinTolerance": true,
+            "failureReason": null
+          },
+          "failedLines": []
+        },
+        "check_invoice_history": {
+          "matchType": "NONE",
+          "matchedInvoice": null
+        },
+        "check_delegated_authority": {
+          "requiredApproverRole": "DEPARTMENT_DIRECTOR",
+          "requiresSecondApproval": false,
+          "secondApprovalReason": null,
+          "limits": {
+            "COST_CENTRE_MANAGER": 10000,
+            "DEPARTMENT_DIRECTOR": 50000,
+            "EXECUTIVE_DIRECTOR": 250000,
+            "CFO": 1000000,
+            "CEO": null
+          }
+        }
+      },
+      "exceptions": [
+        "The search for delegated authority also returned FIN-POL-003-OLD (version 1.0, status superseded) and ADV-002 (status untrusted). I did not rely on either. The approver role comes from the check_delegated_authority tool and current FIN-POL-003 v4.0."
+      ],
+      "unknowns": [
+        "Payment is assumed to be a scheduled-run, domestic payment to the vendor-master bank account. The case did not say otherwise, so the authority check used isManualPayment=false and isOverseasAccount=false. I did not verify these.",
+        "I did not check the vendor creation date. The vendor record has no created date, so isNewVendor=false is assumed from the record's lastUpdated of 2026-07-22 and the bank change date of 2024-03-18."
+      ],
+      "nextAction": "A Department Director should review and approve the AUD 12,500.00 payment for HOS-118877. Payment should go only to the vendor-master bank account (last four digits 8842)."
+    },
+    "proposedAction": "APPROVE_FOR_POSTING"
+  },
+  "auditEvents": [
+    {
+      "timestamp": "2026-10-03T04:19:26.281Z",
+      "correlationId": "9f3684fc-543a-4785-9851-370d8ab85db4",
+      "eventType": "RUN_STARTED",
+      "detail": {
+        "caseId": "FIN-001",
+        "invoiceRef": "HOS-118877"
+      }
+    },
+    {
+      "timestamp": "2026-10-03T04:19:38.334Z",
+      "correlationId": "9f3684fc-543a-4785-9851-370d8ab85db4",
+      "eventType": "APPROVAL_NEEDED",
+      "detail": {
+        "proposedAction": "APPROVE_FOR_POSTING",
+        "recommendation": "Approve HOS-118877 for posting. The three-way match returned MATCH, the duplicate check returned NONE, and the vendor is active with no risk flags. A Department Director must approve the AUD 12,500.00 amount."
+      }
+    }
+  ],
+  "createdAt": "2026-10-03T04:19:26.280Z",
+  "updatedAt": "2026-10-03T04:19:38.337Z"
+}

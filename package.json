@@ -1,0 +1,27 @@
+{
+  "name": "accounts-payable-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agentic AI assistant for accounts payable invoice processing",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test:corpus": "tsx src/corpus/corpus.test.ts",
+    "cli": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "commander": "^15.0.0",
+    "dotenv": "^18.0.5",
+    "voyageai": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
